@@ -1,11 +1,11 @@
-import React from 'react';
-import { connect, useSelector } from 'react-redux';
-import { useTranslation } from 'react-i18next';
+import React from "react";
+import { connect, useSelector } from "react-redux";
+import { useTranslation } from "react-i18next";
 // import styled from 'styled-components';
 
-import { MdUpdate, MdBrightnessMedium, MdTranslate } from 'react-icons/md';
-import { FaFont } from 'react-icons/fa';
-import { AiOutlineRadiusSetting } from 'react-icons/ai';
+import { MdUpdate, MdBrightnessMedium, MdTranslate } from "react-icons/md";
+import { FaFont } from "react-icons/fa";
+import { AiOutlineRadiusSetting } from "react-icons/ai";
 
 import {
   Img,
@@ -17,15 +17,15 @@ import {
   CardContent,
   Select,
   P,
-} from '../../components';
-import { Grid } from '../../containers';
-import BorderRadiusCard from './local-components/BorderRadiusCard';
+} from "../../components";
+import { Grid } from "../../containers";
+import BorderRadiusCard from "./local-components/BorderRadiusCard";
 
-import operating_system from '../../assets/operating_system.svg';
+import operating_system from "../../assets/operating_system.svg";
 
-import { selectTheme, switchTheme } from '../../store/themeSlice';
-import { selectFont, switchFont } from '../../store/fontSlice';
-import { selectLang, switchLang } from '../../store/langSlice';
+import { selectTheme, switchTheme } from "../../store/themeSlice";
+import { selectFont, switchFont } from "../../store/fontSlice";
+import { selectLang, switchLang } from "../../store/langSlice";
 
 const mapDispatch = { switchTheme, switchFont, switchLang };
 
@@ -41,7 +41,7 @@ const Settings = ({ switchTheme, switchFont, switchLang }) => {
     i18n.changeLanguage(value);
   };
 
-  const displayOptions = el => (
+  const displayOptions = (el) => (
     <option key={el} value={el}>
       {el}
     </option>
@@ -49,7 +49,7 @@ const Settings = ({ switchTheme, switchFont, switchLang }) => {
 
   return (
     <div>
-      <Logo>{t('Settings')}</Logo>
+      <Logo>{t("Settings")}</Logo>
       <Img src={operating_system} padding={30} maxHeight={300} />
       <Grid>
         <Card>
@@ -57,16 +57,15 @@ const Settings = ({ switchTheme, switchFont, switchLang }) => {
             <CardIcon>
               <MdBrightnessMedium />
             </CardIcon>
-            <CardTitle>{t('Theme')}</CardTitle>
+            <CardTitle>{t("Theme")}</CardTitle>
           </CardHeader>
           <CardContent>
-            {/* https://www.w3schools.com/tags/tryit.asp?filename=tryhtml_optgroup */}
             <Select
               name="theme"
               onChange={({ target }) => switchTheme(target.value)}
               value={theme}
             >
-              {['light', 'dark', 'pink', 'yellow'].map(displayOptions)}
+              {["light", "dark", "pink", "yellow"].map(displayOptions)}
             </Select>
           </CardContent>
         </Card>
@@ -75,7 +74,7 @@ const Settings = ({ switchTheme, switchFont, switchLang }) => {
             <CardIcon>
               <FaFont />
             </CardIcon>
-            <CardTitle>{t('Font')}</CardTitle>
+            <CardTitle>{t("Font")}</CardTitle>
           </CardHeader>
           <CardContent>
             <Select
@@ -84,11 +83,12 @@ const Settings = ({ switchTheme, switchFont, switchLang }) => {
               value={font}
             >
               {[
-                'Ubuntu',
-                'Montserrat',
-                'Roboto',
-                'Jetbrains Mono',
-                'Arial',
+                "Ubuntu",
+                "Montserrat",
+                "Roboto",
+                "Jetbrains Mono",
+                "Poppins",
+                "Arial",
               ].map(displayOptions)}
             </Select>
           </CardContent>
@@ -98,7 +98,7 @@ const Settings = ({ switchTheme, switchFont, switchLang }) => {
             <CardIcon>
               <AiOutlineRadiusSetting />
             </CardIcon>
-            <CardTitle>{t('Border radius')}</CardTitle>
+            <CardTitle>{t("Border radius")}</CardTitle>
           </CardHeader>
           <CardContent>
             <BorderRadiusCard />
@@ -109,11 +109,11 @@ const Settings = ({ switchTheme, switchFont, switchLang }) => {
             <CardIcon>
               <MdTranslate />
             </CardIcon>
-            <CardTitle>{t('Language')}</CardTitle>
+            <CardTitle>{t("Language")}</CardTitle>
           </CardHeader>
           <CardContent>
             <Select name="lang" onChange={changeLanguage} value={lang}>
-              {['en', 'pl', 'de'].map(displayOptions)}
+              {["en", "pl", "de"].map(displayOptions)}
             </Select>
           </CardContent>
         </Card>
@@ -122,9 +122,9 @@ const Settings = ({ switchTheme, switchFont, switchLang }) => {
             <CardIcon>
               <MdUpdate />
             </CardIcon>
-            <CardTitle>{t('Version')}</CardTitle>
+            <CardTitle>{t("Version")}</CardTitle>
           </CardHeader>
-          <CardContent onClick={() => alert('Easter egg! Dużo klikasz')}>
+          <CardContent onClick={() => alert("Easter egg! Dużo klikasz")}>
             <P>
               <b>
                 v0.6.1 <i>Beta</i>

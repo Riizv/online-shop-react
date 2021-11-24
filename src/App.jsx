@@ -1,17 +1,18 @@
-import React from 'react';
-import { ThemeProvider } from 'styled-components';
-import { createGlobalStyle } from 'styled-components';
-import { useSelector } from 'react-redux';
+import React from "react";
+import { ThemeProvider } from "styled-components";
+import { createGlobalStyle } from "styled-components";
+import { useSelector } from "react-redux";
+import { BrowserRouter } from "react-router-dom";
 
-import './App.scss';
+import "./App.scss";
 
-import { Layout } from './containers';
-import Router from './router/Router';
+import { Layout } from "./containers";
+import Router from "./router/Router";
 
-import { themes } from './themes';
-import { selectTheme } from './store/themeSlice';
-import { selectFont } from './store/fontSlice';
- 
+import { themes } from "./themes";
+import { selectTheme } from "./store/themeSlice";
+import { selectFont } from "./store/fontSlice";
+
 const App = () => {
   const theme = useSelector(selectTheme);
   const font = useSelector(selectFont);
@@ -19,9 +20,11 @@ const App = () => {
   return (
     <ThemeProvider theme={themes[theme]}>
       <GlobalStyle font={font} />
-      <Layout>
-        <Router />
-      </Layout>
+      <BrowserRouter>
+        <Layout>
+          <Router />
+        </Layout>
+      </BrowserRouter>
     </ThemeProvider>
   );
 };

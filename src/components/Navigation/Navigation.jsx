@@ -1,14 +1,14 @@
-import React, { useState } from 'react';
-import { Link as NavLink } from 'react-router-dom';
-import styled from 'styled-components';
+import React, { useState, useEffect } from "react";
+import { Link as NavLink } from "react-router-dom";
+import styled from "styled-components";
 
-import { useTranslation } from 'react-i18next';
-import { useSpring, animated } from 'react-spring';
-import { useDrag } from 'react-use-gesture';
+import { useTranslation } from "react-i18next";
+import { useSpring, animated } from "react-spring";
+import { useDrag } from "react-use-gesture";
 
-import { IconContext } from 'react-icons';
-import { FaHome, FaCloudMoonRain } from 'react-icons/fa';
-import { IoMdSettings, IoMdMenu } from 'react-icons/io';
+import { IconContext } from "react-icons";
+import { FaHome, FaCloudMoonRain } from "react-icons/fa";
+import { IoMdSettings, IoMdMenu } from "react-icons/io";
 
 const Link = styled(NavLink)`
   flex: 1;
@@ -26,7 +26,7 @@ const NameLink = styled.span`
 const Nav = styled.nav`
   display: flex;
   justify-content: space-around;
-  width: calc(100% - 2rem);
+  width: 100%;
   height: 65px;
   background: ${({ theme }) => theme.nav.background};
   & * {
@@ -36,7 +36,7 @@ const Nav = styled.nav`
   position: fixed;
   bottom: 0;
   right: 0;
-  left: 0 ;
+  left: 0;
   margin: 1rem;
   border-radius: ${({ theme }) => theme.borderRadius}rem;
   box-sizing: border-box;
@@ -68,14 +68,7 @@ const Navigation = () => {
     if (swipeY === -1) {
       setSize({ height: 100 });
       setIsOpen({ ...isOpen, height: true });
-      document.body.style.overflow = 'hidden';
-    }
-    if (swipeY === 1) {
-      setSize({ height: 0 });
-      setIsOpen({ ...isOpen, height: false });
-      setTimeout(() => {
-        document.body.style.overflow = 'auto';
-      }, 200);
+      document.body.style.overflow = "hidden";
     }
     if (swipeX === -1) {
       setSize({ width: 100 });
@@ -88,7 +81,7 @@ const Navigation = () => {
     // console.log(isOpen, swipeX, swipeY);
   });
 
-  const toPixel = windowInner => value => {
+  const toPixel = (windowInner) => (value) => {
     const MARGIN = 6 / 0.0625,
       REM = 100 / 0.0625;
 
@@ -106,7 +99,7 @@ const Navigation = () => {
         height: height.interpolate(vhToPixel),
       }}
     >
-      <IconContext.Provider value={{ color: 'blue', size: '2.3rem' }}>
+      <IconContext.Provider value={{ color: "blue", size: "2.3rem" }}>
         {!isOpen.width && !isOpen.height && (
           <IoMdMenu
             style={{ marginTop: `0.8rem` }}
@@ -121,10 +114,10 @@ const Navigation = () => {
             <NavigationLink to="/" name="Home">
               <FaHome />
             </NavigationLink>
-            <NavigationLink to="/weather-station" name={t('Weather Station')}>
+            <NavigationLink to="/weather-station" name={t("Weather Station")}>
               <FaCloudMoonRain />
             </NavigationLink>
-            <NavigationLink to="/settings" name={t('Settings')}>
+            <NavigationLink to="/settings" name={t("Settings")}>
               <IoMdSettings />
             </NavigationLink>
           </>
@@ -161,8 +154,8 @@ const NavigationLink = ({ children, to, name }) => {
       </animated.div>
       <AnimatedNameLink
         style={{
-          transform: ys.interpolate(y => `translateY(${y * 3}px)`),
-          opacity: opacity.interpolate(o => o),
+          transform: ys.interpolate((y) => `translateY(${y * 3}px)`),
+          opacity: opacity.interpolate((o) => o),
         }}
       >
         {name}
