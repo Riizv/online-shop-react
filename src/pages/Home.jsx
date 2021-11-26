@@ -32,9 +32,11 @@ const Home = () => {
             </CardIcon>
             <CardTitle>{t('About App')}</CardTitle>
           </CardHeader>
-          <CardContent>Jesto to strona rozwojowa, do testów różnego rodzaju urządzeń oraz nowinek technologicznych.</CardContent>
+          <CardContent>{t('Main page of shop')}</CardContent>
         </Card>
-        <Card></Card>
+        <Card>
+          
+        </Card>
       </Grid>
       
     </div>
