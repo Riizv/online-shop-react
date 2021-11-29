@@ -19,7 +19,7 @@ import {
   Progress,
 } from '../components';
 import { Grid } from '../containers';
-import weather_notification from '../assets/weather_notification.svg';
+import product_banner from '../assets/undraw_window_shopping_re_0kbm.svg';
 
 const rotate = keyframes`
   from {
@@ -43,8 +43,8 @@ const WeatherStation = () => {
 
   return (
     <div>
-      <Logo>{t('Weather Station')}</Logo>
-      <Img src={weather_notification} padding={30} maxHeight={300} />
+      <Logo>{t('Products')}</Logo>
+      <Img src={product_banner} padding={30} maxHeight={300} />
       <p>
       
       </p>
@@ -69,6 +69,17 @@ const WeatherStation = () => {
             </CardHeader>
             <CardContent>
               <Progress value={32} />
+            </CardContent>
+          </Card>
+          <Card>
+            <CardHeader>
+              <CardIcon>
+                <RiTempColdLine />
+              </CardIcon>
+              <CardTitle>{t('Ile łukasz mi wisi')}</CardTitle>
+            </CardHeader>
+            <CardContent>
+              <Progress value={99999} />
             </CardContent>
           </Card>
         </Grid>

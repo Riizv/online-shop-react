@@ -7,7 +7,7 @@ import { useSpring, animated } from "react-spring";
 import { useDrag } from "react-use-gesture";
 
 import { IconContext } from "react-icons";
-import { FaHome, FaCloudMoonRain } from "react-icons/fa";
+import { FaHome, FaDollyFlatbed, FaShoppingCart } from "react-icons/fa";
 import { IoMdSettings, IoMdMenu } from "react-icons/io";
 
 const Link = styled(NavLink)`
@@ -15,6 +15,7 @@ const Link = styled(NavLink)`
   text-align: center;
   margin-top: 0.8rem;
 `;
+
 
 const NameLink = styled.span`
   display: block;
@@ -111,11 +112,14 @@ const Navigation = () => {
         )}
         {isOpen.width && !isOpen.height && (
           <>
-            <NavigationLink to="/" name="Home">
+            <NavigationLink to="/" name={t("Home")}>
               <FaHome />
             </NavigationLink>
-            <NavigationLink to="/weather-station" name={t("Weather Station")}>
-              <FaCloudMoonRain />
+            <NavigationLink to="/products" name={t("Products")}>
+              <FaDollyFlatbed />
+            </NavigationLink>
+            <NavigationLink to="/cart" name={t("Cart")}>
+              <FaShoppingCart/>
             </NavigationLink>
             <NavigationLink to="/settings" name={t("Settings")}>
               <IoMdSettings />

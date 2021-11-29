@@ -12,7 +12,7 @@ import {
   CardContent,
   CardTitle,
 } from '../components';
-import home_cinema from '../assets/home_cinema.svg';
+import welcome_cats from '../assets/undraw_welcome_cats_thqn.svg';
 import { Grid } from '../containers';
 import { FaCloudMoonRain } from 'react-icons/fa';
 
@@ -21,8 +21,8 @@ const Home = () => {
 
   return (
     <div>
-      <Logo> {t('ExLog App')}</Logo>
-      <Img src={home_cinema} padding={30} maxHeight={300} />
+      <Logo> {t('ExLog Shopp')}</Logo>
+      <Img src={welcome_cats} padding={30} maxHeight={300} />
 
       <Grid>
         <Card>
