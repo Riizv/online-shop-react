@@ -3,7 +3,12 @@ import { connect, useSelector } from "react-redux";
 import { useTranslation } from "react-i18next";
 // import styled from 'styled-components';
 
-import { MdUpdate, MdBrightnessMedium, MdTranslate, MdAccountCircle } from "react-icons/md";
+import {
+  MdUpdate,
+  MdBrightnessMedium,
+  MdTranslate,
+  MdAccountCircle,
+} from "react-icons/md";
 import { FaFont } from "react-icons/fa";
 import { AiOutlineRadiusSetting } from "react-icons/ai";
 
@@ -52,8 +57,7 @@ const Settings = ({ switchTheme, switchFont, switchLang }) => {
       <Logo>{t("Settings")}</Logo>
       <Img src={operating_system} padding={30} maxHeight={300} />
       <Grid>
-
-      <Card>
+        <Card>
           <CardHeader>
             <CardIcon>
               <MdAccountCircle />
@@ -61,11 +65,8 @@ const Settings = ({ switchTheme, switchFont, switchLang }) => {
             <CardTitle>{t("Account")}</CardTitle>
           </CardHeader>
           <CardContent>
-          {t("User Name:")} 
-            <p>
-            {t("Last login:")}
-            </p>
-  
+            {t("User Name:")}
+            <p>{t("Last login:")}</p>
           </CardContent>
         </Card>
 
@@ -144,7 +145,7 @@ const Settings = ({ switchTheme, switchFont, switchLang }) => {
           <CardContent onClick={() => alert("Easter egg! Masz mnie!")}>
             <P>
               <b>
-                v0.6.4.9 <i>Beta</i>
+                v0.6.4.10 <i>Beta</i>
               </b>
             </P>
           </CardContent>

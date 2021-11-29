@@ -1,5 +1,5 @@
-import React from 'react';
-import { useTranslation } from 'react-i18next';
+import React from "react";
+import { useTranslation } from "react-i18next";
 // import { useSelector, useDispatch } from 'react-redux';
 
 import {
@@ -11,17 +11,17 @@ import {
   CardIcon,
   CardContent,
   CardTitle,
-} from '../components';
-import welcome_cats from '../assets/undraw_welcome_cats_thqn.svg';
-import { Grid } from '../containers';
-import { FaCloudMoonRain } from 'react-icons/fa';
+} from "../components";
+import welcome_cats from "../assets/undraw_welcome_cats_thqn.svg";
+import { Grid } from "../containers";
+import { FaCloudMoonRain } from "react-icons/fa";
 
 const Home = () => {
   const { t } = useTranslation();
 
   return (
     <div>
-      <Logo> {t('ExLog Shop')}</Logo>
+      <Logo> {t("ExLog Shop")}</Logo>
       <Img src={welcome_cats} padding={30} maxHeight={300} />
 
       <Grid>
@@ -30,15 +30,12 @@ const Home = () => {
             <CardIcon>
               <FaCloudMoonRain />
             </CardIcon>
-            <CardTitle>{t('About App')}</CardTitle>
+            <CardTitle>{t("About App")}</CardTitle>
           </CardHeader>
-          <CardContent>{t('Main page of shop')}</CardContent>
+          <CardContent>{t("Main page of shop")}</CardContent>
         </Card>
-        <Card>
-          
-        </Card>
+        <Card></Card>
       </Grid>
-      
     </div>
   );
 };

@@ -1,12 +1,11 @@
-import React from 'react';
-import { useTranslation } from 'react-i18next';
-import { MdError } from 'react-icons/md';
-import { AiOutlineLoading3Quarters } from 'react-icons/ai';
-import styled, { keyframes } from 'styled-components';
+import React from "react";
+import { useTranslation } from "react-i18next";
+import { MdError } from "react-icons/md";
+import { AiOutlineLoading3Quarters } from "react-icons/ai";
+import styled, { keyframes } from "styled-components";
 
-import { IoIosWater } from 'react-icons/io';
-import { RiTempColdLine } from 'react-icons/ri';
-
+import { IoIosWater } from "react-icons/io";
+import { RiTempColdLine } from "react-icons/ri";
 
 import {
   Img,
@@ -17,9 +16,9 @@ import {
   CardTitle,
   CardContent,
   Progress,
-} from '../components';
-import { Grid } from '../containers';
-import product_banner from '../assets/undraw_window_shopping_re_0kbm.svg';
+} from "../components";
+import { Grid } from "../containers";
+import product_banner from "../assets/undraw_window_shopping_re_0kbm.svg";
 
 const rotate = keyframes`
   from {
@@ -38,29 +37,26 @@ const AnimationAiOutlineLoading3Quarters = styled(AiOutlineLoading3Quarters)`
 `;
 
 const WeatherStation = () => {
- 
   const { t } = useTranslation();
 
   return (
     <div>
-      <Logo>{t('Products')}</Logo>
+      <Logo>{t("Products")}</Logo>
       <Img src={product_banner} padding={30} maxHeight={300} />
-      <p>
-      
-      </p>
-        <Grid>
-          <Card>
-            <CardHeader>
-              <CardIcon>
-                <RiTempColdLine />
-              </CardIcon>
-              <CardTitle>{t('Ile łukasz mi wisi')}</CardTitle>
-            </CardHeader>
-            <CardContent>
-              <Progress value={99999} />
-            </CardContent>
-          </Card>
-        </Grid>
+      <p></p>
+      <Grid>
+        <Card>
+          <CardHeader>
+            <CardIcon>
+              <RiTempColdLine />
+            </CardIcon>
+            <CardTitle>{t("Ile łukasz mi wisi")}</CardTitle>
+          </CardHeader>
+          <CardContent>
+            <Progress value={99999} />
+          </CardContent>
+        </Card>
+      </Grid>
     </div>
   );
 };
