@@ -21,7 +21,7 @@ const Home = () => {
 
   return (
     <div>
-      <Logo> {t('ExLog Shopp')}</Logo>
+      <Logo> {t('ExLog Shop')}</Logo>
       <Img src={welcome_cats} padding={30} maxHeight={300} />
 
       <Grid>

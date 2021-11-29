@@ -54,28 +54,6 @@ const WeatherStation = () => {
               <CardIcon>
                 <RiTempColdLine />
               </CardIcon>
-              <CardTitle>{t('Temperature')}</CardTitle>
-            </CardHeader>
-            <CardContent>
-              <Progress value={14} />
-            </CardContent>
-          </Card>
-          <Card>
-            <CardHeader>
-              <CardIcon>
-                <IoIosWater />
-              </CardIcon>
-              <CardTitle>{t('Humidity')}</CardTitle>
-            </CardHeader>
-            <CardContent>
-              <Progress value={32} />
-            </CardContent>
-          </Card>
-          <Card>
-            <CardHeader>
-              <CardIcon>
-                <RiTempColdLine />
-              </CardIcon>
               <CardTitle>{t('Ile łukasz mi wisi')}</CardTitle>
             </CardHeader>
             <CardContent>
