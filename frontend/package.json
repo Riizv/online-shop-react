@@ -5,6 +5,7 @@
     "start": "npm run dev",
     "dev": "vite",
     "build": "vite build",
+    "watch": "vite build --watch & vite preview --host 0.0.0.0 --port 80",
     "serve": "vite preview"
   },
   "dependencies": {
