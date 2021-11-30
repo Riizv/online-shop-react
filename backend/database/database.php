@@ -3,8 +3,8 @@
 class Database
 {
     private $host = "localhost";
-    private $user = "root";
-    private $password = "";
+    private $user = "kacper";
+    private $password = "TKmxbQv6e3Q4Zc";
     private $database = "online_shop";
 
     private $connection;
@@ -22,3 +22,4 @@ class Database
         return $this->connection;
     }
 }
+echo "cos";
