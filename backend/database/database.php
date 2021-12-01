@@ -2,8 +2,8 @@
 
 class Database
 {
-    private $host = "localhost";
-    private $user = "kacper";
+    private $host = "db";
+    private $user = "root";
     private $password = "TKmxbQv6e3Q4Zc";
     private $database = "online_shop";
 

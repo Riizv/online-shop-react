@@ -16,4 +16,4 @@ services:
   db:
     image: mariadb
     environment:
-        MYSQL_ROOT_PASSWORD: zaq1
+        MYSQL_ROOT_PASSWORD: TKmxbQv6e3Q4Zc
