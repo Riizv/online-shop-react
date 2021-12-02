@@ -16,5 +16,5 @@ git clone "this repo"
 
 ```bash
 docker-compose up --build -d
-# to build project once
+# to build project
 ```
