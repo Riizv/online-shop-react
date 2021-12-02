@@ -3,7 +3,7 @@ import { useTranslation } from "react-i18next";
 import { MdError } from "react-icons/md";
 import { AiOutlineLoading3Quarters } from "react-icons/ai";
 import styled, { keyframes } from "styled-components";
-import { useNavigate } from 'react-router-dom'
+import { useNavigate, useParams } from 'react-router-dom'
 
 import { IoIosWater } from "react-icons/io";
 import { RiTempColdLine } from "react-icons/ri";
@@ -38,13 +38,13 @@ const AnimationAiOutlineLoading3Quarters = styled(AiOutlineLoading3Quarters)`
   position: absolute;
 `;
 
-const Products = () => {
+const Product = () => {
   const { t } = useTranslation();
-  const [data, setData] = useState([]);
-  const navigate = useNavigate();
+  const [data, setData] = useState({});
+  const {id} = useParams();
 
   useEffect(() => {
-    fetch("http://localhost:8080/api/get_products.php")
+    fetch(`http://localhost:8080/api/get_product.php?id=${id}`)
       .then((r) => r.json())
       .then((r) => setData(r));
     // console.log();
@@ -59,20 +59,19 @@ const Products = () => {
       <p></p>
       <Grid>
 
-      {data?data.map(element=>(
+      
          <Card>
          <CardHeader>
-           <CardIcon onClick={()=>navigate(`/product/${element.id}`)}>
+           <CardIcon>
              <RiTempColdLine />
            </CardIcon>
-           <CardTitle>{element.product_name}</CardTitle>
+           <CardTitle>{data?.product_name}</CardTitle>
          </CardHeader>
          <CardContent>
-           {element.description}
+           {data?.description}
            {/* <Progress value={99999} /> */}
          </CardContent>
        </Card>
-      )):<div>Nie znaleziono łukasza</div>}
 
        
       </Grid>
@@ -80,4 +79,4 @@ const Products = () => {
   );
 };
 
-export default Products;
+export default Product;

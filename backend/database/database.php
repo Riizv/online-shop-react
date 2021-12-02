@@ -1,5 +1,9 @@
 <?php
+//mysqli_report(MYSQLI_REPORT_ALL | MYSQLI_REPORT_STRICT);
 
+header("Access-Control-Allow-Origin: *");
+header("Access-Control-Allow-Headers: *");
+header("Content-Type: application/json; charset=UTF-8");
 class Database
 {
     private $host = "db";
@@ -12,6 +16,7 @@ class Database
     public function __construct()
     {
         $this->connection = new mysqli($this->host, $this->user, $this->password, $this->database);
+        $this->connection->set_charset("utf8");
         if ($this->connection->connect_error) {
             die("Connection failed: " . $this->connection->connect_error);
         }
@@ -19,7 +24,7 @@ class Database
 
     public function getConnection()
     {
+       
         return $this->connection;
     }
 }
-echo "cos";

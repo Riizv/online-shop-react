@@ -20,4 +20,14 @@ class Product{
         return $products;
          
     }
+    public function get_product($id){
+        $query = "SELECT * FROM products WHERE id=$id";
+
+        $result = $this->db->getConnection()->query($query);
+
+        $product = $result->fetch_assoc();
+       
+        return $product;
+         
+    }
 }
