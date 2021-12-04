@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
 import { MdError } from "react-icons/md";
-import { AiOutlineLoading3Quarters } from "react-icons/ai";
+import { AiOutlineLoading3Quarters, AiFillFire } from "react-icons/ai";
 import styled, { keyframes } from "styled-components";
 import { useNavigate, useParams } from "react-router-dom";
 
@@ -54,7 +54,7 @@ const Product = () => {
   return (
     <div>
       <Helmet>
-        <title>Products</title>
+        <title>Product</title>
       </Helmet>
       <Logo>{t("Products")}</Logo>
       <Img src={product_banner} padding={30} maxHeight={300} />
@@ -63,7 +63,7 @@ const Product = () => {
         <Card>
           <CardHeader>
             <CardIcon>
-              <RiTempColdLine />
+              <AiFillFire />
             </CardIcon>
             <CardTitle>{data?.product_name}</CardTitle>
           </CardHeader>

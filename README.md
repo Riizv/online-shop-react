@@ -9,7 +9,7 @@ _Note that you will need to have [Docker](https://www.docker.com/) installed._
 Installation...
 
 ```bash
-git clone "this repo"
+git clone https://github.com/Riizv/online-shop-react.git
 ```
 
 ...then start in main folder:

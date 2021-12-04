@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
 import { MdError } from "react-icons/md";
-import { AiOutlineLoading3Quarters } from "react-icons/ai";
+import { AiOutlineLoading3Quarters, AiOutlineFire } from "react-icons/ai";
 import styled, { keyframes } from "styled-components";
 import { useNavigate } from "react-router-dom";
 
@@ -65,7 +65,7 @@ const Products = () => {
             <Card>
               <CardHeader>
                 <CardIcon onClick={() => navigate(`/product/${element.id}`)}>
-                  <RiTempColdLine />
+                  <AiOutlineFire />
                 </CardIcon>
                 <CardTitle>{element.product_name}</CardTitle>
               </CardHeader>

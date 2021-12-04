@@ -1,0 +1,13 @@
+{
+    "name": "riizv/backend",
+    "type": "jwt-php",
+    "require": {
+        "firebase/php-jwt": "^5.5",
+        "paragonie/sodium_compat": "^1.17"
+    },
+    "autoload": {
+        "psr-4": {
+            "Riizv\\Backend\\": "src/"
+        }
+    }
+}
