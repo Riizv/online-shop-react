@@ -1,6 +1,7 @@
 import React from 'react';
 import { useTranslation } from 'react-i18next';
 // import { useSelector, useDispatch } from 'react-redux';
+import {Helmet} from "react-helmet";
 
 import {
   Img,
@@ -21,6 +22,9 @@ const Cart = () => {
 
   return (
     <div>
+      <Helmet>
+      <title>Cart</title>
+      </Helmet>
       <Logo> {t('Cart')}</Logo>
       <Img src={order} padding={30} maxHeight={300} />
 

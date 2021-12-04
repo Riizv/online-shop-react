@@ -2,6 +2,7 @@ import React from "react";
 import { connect, useSelector } from "react-redux";
 import { useTranslation } from "react-i18next";
 // import styled from 'styled-components';
+import { Helmet } from "react-helmet";
 
 import {
   MdUpdate,
@@ -54,6 +55,9 @@ const Settings = ({ switchTheme, switchFont, switchLang }) => {
 
   return (
     <div>
+      <Helmet>
+        <title>Settings</title>
+      </Helmet>
       <Logo>{t("Settings")}</Logo>
       <Img src={operating_system} padding={30} maxHeight={300} />
       <Grid>

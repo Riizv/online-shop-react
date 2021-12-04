@@ -1,6 +1,7 @@
 import React from "react";
 import { useTranslation } from "react-i18next";
 // import { useSelector, useDispatch } from 'react-redux';
+import { Helmet } from "react-helmet";
 
 import {
   Img,
@@ -21,6 +22,9 @@ const Home = () => {
 
   return (
     <div>
+      <Helmet>
+        <title>Main page</title>
+      </Helmet>
       <Logo> {t("ExLog Shop")}</Logo>
       <Img src={welcome_cats} padding={30} maxHeight={300} />
 

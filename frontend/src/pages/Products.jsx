@@ -3,10 +3,11 @@ import { useTranslation } from "react-i18next";
 import { MdError } from "react-icons/md";
 import { AiOutlineLoading3Quarters } from "react-icons/ai";
 import styled, { keyframes } from "styled-components";
-import { useNavigate } from 'react-router-dom'
+import { useNavigate } from "react-router-dom";
 
 import { IoIosWater } from "react-icons/io";
 import { RiTempColdLine } from "react-icons/ri";
+import { Helmet } from "react-helmet";
 
 import {
   Img,
@@ -50,31 +51,33 @@ const Products = () => {
     // console.log();
   });
 
-
-
   return (
     <div>
+      <Helmet>
+        <title>Products</title>
+      </Helmet>
       <Logo>{t("Products")}</Logo>
       <Img src={product_banner} padding={30} maxHeight={300} />
       <p></p>
       <Grid>
-
-      {data?data.map(element=>(
-         <Card>
-         <CardHeader>
-           <CardIcon onClick={()=>navigate(`/product/${element.id}`)}>
-             <RiTempColdLine />
-           </CardIcon>
-           <CardTitle>{element.product_name}</CardTitle>
-         </CardHeader>
-         <CardContent>
-           {element.description}
-           {/* <Progress value={99999} /> */}
-         </CardContent>
-       </Card>
-      )):<div>Nie znaleziono łukasza</div>}
-
-       
+        {data ? (
+          data.map((element) => (
+            <Card>
+              <CardHeader>
+                <CardIcon onClick={() => navigate(`/product/${element.id}`)}>
+                  <RiTempColdLine />
+                </CardIcon>
+                <CardTitle>{element.product_name}</CardTitle>
+              </CardHeader>
+              <CardContent>
+                {element.description}
+                {/* <Progress value={99999} /> */}
+              </CardContent>
+            </Card>
+          ))
+        ) : (
+          <div>Nie znaleziono łukasza</div>
+        )}
       </Grid>
     </div>
   );
