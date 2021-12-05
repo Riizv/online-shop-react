@@ -40,5 +40,5 @@ docker-compose up --build -d
     "snowstorm": "^1.0.0" \
     "styled-components": "^5.3.3"
     "@vitejs/plugin-react": "^1.0.0" \
-    "vite": "^2.6.4" \
+    "vite": "^2.6.4" 
   
