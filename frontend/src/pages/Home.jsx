@@ -2,6 +2,7 @@ import React from "react";
 import { useTranslation } from "react-i18next";
 // import { useSelector, useDispatch } from 'react-redux';
 import { Helmet } from "react-helmet";
+import Snowfall from "react-snowfall"
 
 import {
   Img,
@@ -26,7 +27,11 @@ const Home = () => {
         <title>Main page</title>
       </Helmet>
       <Logo> {t("ExLog Shop")}</Logo>
+      <div style={{overflow: 'hidden', position: 'relative', height: '18.79rem' }}>
+        <Snowfall snowflakeCount={30} />
       <Img src={welcome_cats} padding={30} maxHeight={300} />
+      </div>
+      
 
       <Grid>
         <Card>

@@ -1,6 +1,6 @@
 import React from "react";
 import { Routes, Route } from "react-router-dom";
-import { Home, Products, Product, Cart, Settings, PageNotFound } from "../pages";
+import { Home, Products, Product, Cart, Settings, Register, PageNotFound } from "../pages";
 
 const Router = () => {
   return (
@@ -14,6 +14,8 @@ const Router = () => {
         <Route path="/cart" element={<Cart />} />
 
         <Route path="/settings" element={<Settings />} />
+
+        <Route path="/register" element={<Register />} />
 
       <Route path="*" element={<PageNotFound />} />
       </Routes>

@@ -8,7 +8,7 @@ const StyledInput = styled.input`
   border-radius: ${({ theme }) => theme.borderRadius / 1.5}rem;
   background: ${({ theme }) => theme.second};
   border: none;
-  width: 100%;
+  /* width: 100%; */
   color: ${({ theme }) => theme.card.fontColor};
   font-size: 1rem;
   font-weight: bold;
