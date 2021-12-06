@@ -21,7 +21,7 @@ class Product{
          
     }
     public function get_product($id){
-        $query = "SELECT * FROM products WHERE id=$id";
+        $query = "SELECT * FROM products WHERE product_id=$id";
 
         $result = $this->db->getConnection()->query($query);
 

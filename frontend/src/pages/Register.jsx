@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useRef, useEffect } from "react";
 import { useTranslation } from "react-i18next";
 // import { useSelector, useDispatch } from 'react-redux';
 import { Helmet } from "react-helmet";
@@ -14,7 +14,7 @@ import {
   CardContent,
   CardTitle,
 } from "../components";
-import register from "../assets/undraw_access_account_re_8spm.svg";
+import register_img from "../assets/undraw_access_account_re_8spm.svg";
 import { Grid } from "../containers";
 import { FaCloudMoonRain } from "react-icons/fa";
 import { GiArchiveRegister } from "react-icons/gi";
@@ -32,6 +32,18 @@ const Form = styled.form`
 `;
 const Register = () => {
   const { t } = useTranslation();
+  const formRef = useRef();
+
+  const register = (e) => {
+    e.preventDefault();
+    const formData = new FormData(formRef.current);
+    fetch("http://localhost:8080/api/register.php", {
+      method: "POST",
+      body: formData,
+    })
+      .then((r) => r.text())
+      .then((r) => console.log(r));
+  };
 
   return (
     <div>
@@ -39,7 +51,7 @@ const Register = () => {
         <title>Register</title>
       </Helmet>
       <Logo> {t("Register")}</Logo>
-      <Img src={register} padding={30} maxHeight={300} />
+      <Img src={register_img} padding={30} maxHeight={300} />
       <Grid>
         <Card>
           <CardHeader>
@@ -49,7 +61,7 @@ const Register = () => {
             <CardTitle>Register data:</CardTitle>
           </CardHeader>
           <CardContent>
-            <Form onSubmit={register}>
+            <Form ref={formRef} onSubmit={register}>
               <div>
                 <label htmlFor="name">Name:</label>
                 <Input type="text" name="name" />
@@ -72,7 +84,7 @@ const Register = () => {
               </div>
               <div>
                 <label htmlFor="phone_number">Phone number:</label>
-                <Input type="number" name="phone_numer" maxLength="9" />
+                <Input type="number" name="phone_number" maxLength="9" />
               </div>
               <div>
                 <label htmlFor="email">E-mail:</label>
@@ -96,7 +108,7 @@ const Register = () => {
         <Card>
           <CardHeader>
             <CardIcon>
-            <GiArchiveRegister />
+              <GiArchiveRegister />
             </CardIcon>
             <CardTitle>Kacper</CardTitle>
           </CardHeader>

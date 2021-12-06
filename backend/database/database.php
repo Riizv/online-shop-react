@@ -1,5 +1,5 @@
 <?php
-//mysqli_report(MYSQLI_REPORT_ALL | MYSQLI_REPORT_STRICT);
+mysqli_report(MYSQLI_REPORT_ALL | MYSQLI_REPORT_STRICT);
 
 header("Access-Control-Allow-Origin: *");
 header("Access-Control-Allow-Headers: *");

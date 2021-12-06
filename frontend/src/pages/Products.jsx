@@ -48,7 +48,7 @@ const Products = () => {
     fetch("http://localhost:8080/api/get_products.php")
       .then((r) => r.json())
       .then((r) => setData(r));
-    // console.log();
+     console.log(data);
   });
 
   return (
@@ -64,7 +64,7 @@ const Products = () => {
           data.map((element) => (
             <Card>
               <CardHeader>
-                <CardIcon onClick={() => navigate(`/product/${element.id}`)}>
+                <CardIcon onClick={() => navigate(`/product/${element.product_id}`)}>
                   <AiOutlineFire />
                 </CardIcon>
                 <CardTitle>{element.product_name}</CardTitle>

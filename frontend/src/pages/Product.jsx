@@ -48,7 +48,7 @@ const Product = () => {
     fetch(`http://localhost:8080/api/get_product.php?id=${id}`)
       .then((r) => r.json())
       .then((r) => setData(r));
-    // console.log();
+    console.log(data);
   });
 
   return (
