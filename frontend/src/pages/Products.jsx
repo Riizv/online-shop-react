@@ -42,14 +42,15 @@ const AnimationAiOutlineLoading3Quarters = styled(AiOutlineLoading3Quarters)`
 const Products = () => {
   const { t } = useTranslation();
   const [data, setData] = useState([]);
+  const [value, setValue] = useState("");
   const navigate = useNavigate();
 
   useEffect(() => {
-    fetch("http://localhost:8080/api/get_products.php")
+    fetch("http://localhost/online-shop-react/backend/api/get_products.php")
       .then((r) => r.json())
       .then((r) => setData(r));
      console.log(data);
-  });
+  },[value]);
 
   return (
     <div>

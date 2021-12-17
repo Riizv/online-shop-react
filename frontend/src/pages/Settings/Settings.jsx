@@ -1,8 +1,9 @@
 import React from "react";
 import { connect, useSelector } from "react-redux";
 import { useTranslation } from "react-i18next";
-// import styled from 'styled-components';
+import styled from 'styled-components';
 import { Helmet } from "react-helmet";
+import { useNavigate, Link } from "react-router-dom";
 
 import {
   MdUpdate,
@@ -33,12 +34,40 @@ import { selectTheme, switchTheme } from "../../store/themeSlice";
 import { selectFont, switchFont } from "../../store/fontSlice";
 import { selectLang, switchLang } from "../../store/langSlice";
 
+
 const mapDispatch = { switchTheme, switchFont, switchLang };
+
+
+const StyledLink = styled(Link)`
+  display: block;
+  padding: 1rem;
+  box-sizing: border-box;
+  border-radius: ${({ theme }) => theme.borderRadius / 1.5}rem;
+  background: ${({ theme }) => theme.second};
+  border: none;
+  width: 100%;
+  color: ${({ theme }) => theme.card.fontColor};
+  font-size: 1rem;
+  font-weight: bold;
+  text-align: center;
+  text-decoration: none;
+
+  &:active,
+  &:focus {
+    outline: none;
+  }
+  > * {
+    background: ${({ theme }) => theme.card.backgroundColor};
+    color: ${({ theme }) => theme.card.fontColor};
+  }
+`
+
 
 const Settings = ({ switchTheme, switchFont, switchLang }) => {
   const theme = useSelector(selectTheme);
   const font = useSelector(selectFont);
   const lang = useSelector(selectLang);
+  const navigate = useNavigate();
 
   const { t, i18n } = useTranslation();
 
@@ -61,6 +90,19 @@ const Settings = ({ switchTheme, switchFont, switchLang }) => {
       <Logo>{t("Settings")}</Logo>
       <Img src={operating_system} padding={30} maxHeight={300} />
       <Grid>
+
+      <Card>
+          <CardHeader>
+            <CardIcon>
+              <MdAccountCircle />
+            </CardIcon>
+            <CardTitle>{t("Sign up or Sign in")}</CardTitle>
+          </CardHeader>
+          <CardContent>
+           <StyledLink to='/register/'>Join us! or Sign in!</StyledLink>
+          </CardContent>
+        </Card>
+
         <Card>
           <CardHeader>
             <CardIcon>

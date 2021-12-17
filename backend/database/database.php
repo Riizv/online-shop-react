@@ -1,14 +1,15 @@
 <?php
-mysqli_report(MYSQLI_REPORT_ALL | MYSQLI_REPORT_STRICT);
+mysqli_report(MYSQLI_REPORT_ERROR | MYSQLI_REPORT_STRICT);
 
 header("Access-Control-Allow-Origin: *");
 header("Access-Control-Allow-Headers: *");
 header("Content-Type: application/json; charset=UTF-8");
+
 class Database
 {
-    private $host = "db";
+    private $host = "localhost";
     private $user = "root";
-    private $password = "TKmxbQv6e3Q4Zc";
+    private $password = "";
     private $database = "online_shop";
 
     private $connection;

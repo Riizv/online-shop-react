@@ -33,11 +33,23 @@ const Form = styled.form`
 const Register = () => {
   const { t } = useTranslation();
   const formRef = useRef();
+  const formRef2 = useRef();
 
   const register = (e) => {
     e.preventDefault();
     const formData = new FormData(formRef.current);
-    fetch("http://localhost:8080/api/register.php", {
+    fetch("http://localhost/online-shop-react/backend/api/register.php", {
+      method: "POST",
+      body: formData,
+    })
+      .then((r) => r.text())
+      .then((r) => console.log(r));
+  };
+
+  const sigin = (e) => {
+    e.preventDefault();
+    const formData = new FormData(formRef2.current);
+    fetch("http://localhost/online-shop-react/backend/api/signin.php", {
       method: "POST",
       body: formData,
     })
@@ -58,7 +70,7 @@ const Register = () => {
             <CardIcon>
               <GiArchiveRegister />
             </CardIcon>
-            <CardTitle>Register data:</CardTitle>
+            <CardTitle>Signup:</CardTitle>
           </CardHeader>
           <CardContent>
             <Form ref={formRef} onSubmit={register}>
@@ -88,7 +100,7 @@ const Register = () => {
               </div>
               <div>
                 <label htmlFor="email">E-mail:</label>
-                <Input type="text" name="email" />
+                <Input type="email" name="email" />
               </div>
               <div>
                 <label htmlFor="password">Password:</label>
@@ -99,8 +111,8 @@ const Register = () => {
                 <Input type="password" name="password2" minLength="8" />
               </div>
               <div>
-                <label htmlFor="submit">Join us!</label>
-                <Input type="submit" name="submit" value="Create" />
+                <label htmlFor="submit">Sign up!</label>
+                <Input type="submit" name="submit" value="Sign up!" />
               </div>
             </Form>
           </CardContent>
@@ -110,9 +122,24 @@ const Register = () => {
             <CardIcon>
               <GiArchiveRegister />
             </CardIcon>
-            <CardTitle>Kacper</CardTitle>
+            <CardTitle>Sign in:</CardTitle>
           </CardHeader>
           <CardContent>
+            <Form ref={formRef2} onSubmit={sigin}>
+              <div>
+                <label htmlFor="signin_email">E-mail:</label>
+                <Input type="email" name="signin_email" />
+              </div>
+              <div>
+                <label htmlFor="signin_password">password:</label>
+                <Input type="password" name="signin_password" minLength="8" />
+              </div>
+              <div>
+                <label htmlFor="submit">Sign in!</label>
+                <Input type="submit" name="submit" value="Sign in!" />
+              </div>
+            </Form>
+            <p></p>
             <a href="https://kcpru.com">Idż do kacpra</a>
           </CardContent>
         </Card>
