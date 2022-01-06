@@ -99,7 +99,7 @@ const Settings = ({ switchTheme, switchFont, switchLang }) => {
             <CardTitle>{t("Sign up or Sign in")}</CardTitle>
           </CardHeader>
           <CardContent>
-           <StyledLink to='/register/'>Join us! or Sign in!</StyledLink>
+           <StyledLink  to='/register/'>Join us! or Sign in!</StyledLink>
           </CardContent>
         </Card>
 
@@ -111,8 +111,7 @@ const Settings = ({ switchTheme, switchFont, switchLang }) => {
             <CardTitle>{t("Account")}</CardTitle>
           </CardHeader>
           <CardContent>
-            {t("User Name:")}
-            <p>{t("Last login:")}</p>
+          <StyledLink  to='/account/'> {t("Catch me if you can")} </StyledLink>
           </CardContent>
         </Card>
 
@@ -129,7 +128,7 @@ const Settings = ({ switchTheme, switchFont, switchLang }) => {
               onChange={({ target }) => switchTheme(target.value)}
               value={theme}
             >
-              {["light", "dark", "pink", "yellow"].map(displayOptions)}
+              {["light", "dark", "pink", "yellow", "green"].map(displayOptions)}
             </Select>
           </CardContent>
         </Card>
@@ -191,7 +190,7 @@ const Settings = ({ switchTheme, switchFont, switchLang }) => {
           <CardContent onClick={() => alert("Easter egg! Masz mnie!")}>
             <P>
               <b>
-                v0.6.4.10 <i>Beta</i>
+                v0.20.2.22 <i>Beta</i>
               </b>
             </P>
           </CardContent>

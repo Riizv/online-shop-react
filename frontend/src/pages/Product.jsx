@@ -5,7 +5,8 @@ import { AiOutlineLoading3Quarters, AiFillFire } from "react-icons/ai";
 import styled, { keyframes } from "styled-components";
 import { useNavigate, useParams } from "react-router-dom";
 
-import { IoIosWater } from "react-icons/io";
+
+import { IoMdArrowBack } from "react-icons/io";
 import { RiTempColdLine } from "react-icons/ri";
 import { Helmet } from "react-helmet";
 
@@ -44,6 +45,7 @@ const Product = () => {
   const [data, setData] = useState({});
   const [value, setValue] = useState("");
   const { id } = useParams();
+  const navigate = useNavigate();
 
   useEffect(() => {
     fetch(`http://localhost/online-shop-react/backend/api/get_product.php?id=${id}`)
@@ -63,8 +65,8 @@ const Product = () => {
       <Grid>
         <Card>
           <CardHeader>
-            <CardIcon>
-              <AiFillFire />
+            <CardIcon onClick={() => navigate(`/products/`)}>
+              <IoMdArrowBack />
             </CardIcon>
             <CardTitle>{data?.product_name}</CardTitle>
           </CardHeader>

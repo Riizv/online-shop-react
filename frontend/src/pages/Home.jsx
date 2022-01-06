@@ -1,8 +1,10 @@
 import React from "react";
 import { useTranslation } from "react-i18next";
-// import { useSelector, useDispatch } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
+import styled from 'styled-components';
 import { Helmet } from "react-helmet";
 import Snowfall from "react-snowfall"
+
 
 import {
   Img,
@@ -16,10 +18,13 @@ import {
 } from "../components";
 import welcome_cats from "../assets/undraw_welcome_cats_thqn.svg";
 import { Grid } from "../containers";
-import { FaCloudMoonRain } from "react-icons/fa";
+import { GiChestnutLeaf } from "react-icons/gi";
+import { selectTheme } from "../store/themeSlice";
+
 
 const Home = () => {
   const { t } = useTranslation();
+  const theme = useSelector(selectTheme);
 
   return (
     <div>
@@ -28,7 +33,7 @@ const Home = () => {
       </Helmet>
       <Logo> {t("ExLog Shop")}</Logo>
       <div style={{overflow: 'hidden', position: 'relative', height: '18.79rem' }}>
-        <Snowfall snowflakeCount={30} />
+        <Snowfall snowflakeCount={30} color={theme} />
       <Img src={welcome_cats} padding={30} maxHeight={300} />
       </div>
       
@@ -37,11 +42,11 @@ const Home = () => {
         <Card>
           <CardHeader>
             <CardIcon>
-              <FaCloudMoonRain />
+              <GiChestnutLeaf />
             </CardIcon>
-            <CardTitle>{t("About App")}</CardTitle>
+            <CardTitle>{t("About Shop")}</CardTitle>
           </CardHeader>
-          <CardContent>{t("Main page of shop")}</CardContent>
+          <CardContent>{t("We are lesser poland lider in CBD industry!")}</CardContent>
         </Card>
         <Card></Card>
       </Grid>

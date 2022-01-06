@@ -1,22 +1,25 @@
 # Online Shop
 
-_Note that you will need to have [Node.js](https://nodejs.org) installed._
+_This project is developing online shop application which is dedicated to CBD and hemp. We all deserve relaxation, so I want to give some part of it. Enjoy CND with me!_
 
-_Note that you will need to have [Docker](https://www.docker.com/) installed._
+<!-- _Note that you will need to have [Docker](https://www.docker.com/) installed._ -->
 
 ## Get started
+
+_Note that you will need to have [Node.js](https://nodejs.org) installed._
 
 Installation...
 
 ```bash
 git clone https://github.com/Riizv/online-shop-react.git
+# to get this project
 ```
 
-...then start in main folder:
+...then link this project to C:\xampp\htdocs and in terminal in original directory write:
 
 ```bash
-docker-compose up --build -d
-# to build project
+npm start
+# to start frontend side of project
 ```
 
 ## Used packages

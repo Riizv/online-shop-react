@@ -16,7 +16,6 @@ import {
 } from "../components";
 import register_img from "../assets/undraw_access_account_re_8spm.svg";
 import { Grid } from "../containers";
-import { FaCloudMoonRain } from "react-icons/fa";
 import { GiArchiveRegister } from "react-icons/gi";
 
 const Form = styled.form`
@@ -70,7 +69,7 @@ const Register = () => {
             <CardIcon>
               <GiArchiveRegister />
             </CardIcon>
-            <CardTitle>Signup:</CardTitle>
+            <CardTitle>Sign up:</CardTitle>
           </CardHeader>
           <CardContent>
             <Form ref={formRef} onSubmit={register}>
