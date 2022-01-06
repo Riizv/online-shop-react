@@ -1,6 +1,6 @@
 # Online Shop
 
-_This project is developing online shop application which is dedicated to CBD and hemp. We all deserve relaxation, so I want to give some part of it. Enjoy CND with me!_
+_This project is developing online shop application which is dedicated to CBD and hemp. We all deserve relaxation, so I want to give some part of it. Enjoy CBD with me!_
 
 <!-- _Note that you will need to have [Docker](https://www.docker.com/) installed._ -->
 
