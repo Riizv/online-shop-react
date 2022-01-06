@@ -1,7 +1,7 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { connect, useSelector } from "react-redux";
 import { useTranslation } from "react-i18next";
-import styled from 'styled-components';
+import styled from "styled-components";
 import { Helmet } from "react-helmet";
 import { useNavigate, Link } from "react-router-dom";
 
@@ -34,9 +34,7 @@ import { selectTheme, switchTheme } from "../../store/themeSlice";
 import { selectFont, switchFont } from "../../store/fontSlice";
 import { selectLang, switchLang } from "../../store/langSlice";
 
-
 const mapDispatch = { switchTheme, switchFont, switchLang };
-
 
 const StyledLink = styled(Link)`
   display: block;
@@ -60,16 +58,31 @@ const StyledLink = styled(Link)`
     background: ${({ theme }) => theme.card.backgroundColor};
     color: ${({ theme }) => theme.card.fontColor};
   }
-`
-
+`;
 
 const Settings = ({ switchTheme, switchFont, switchLang }) => {
   const theme = useSelector(selectTheme);
   const font = useSelector(selectFont);
   const lang = useSelector(selectLang);
   const navigate = useNavigate();
+  const [data, setData] = useState([]);
 
   const { t, i18n } = useTranslation();
+
+  useEffect(() => {
+    fetch("http://localhost/online-shop-react/backend/api/get_user.php", {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `${localStorage.getItem("token")}`,
+      },
+    })
+      .then((r) => r.json())
+      .then((r) => setData(r));
+    console.log(data);
+  }, []);
+
+  const isLogIn = data?.user_id;
 
   const changeLanguage = ({ target: { value } }) => {
     switchLang(value);
@@ -90,31 +103,34 @@ const Settings = ({ switchTheme, switchFont, switchLang }) => {
       <Logo>{t("Settings")}</Logo>
       <Img src={operating_system} padding={30} maxHeight={300} />
       <Grid>
-
-      <Card>
-          <CardHeader>
-            <CardIcon>
-              <MdAccountCircle />
-            </CardIcon>
-            <CardTitle>{t("Sign up or Sign in")}</CardTitle>
-          </CardHeader>
-          <CardContent>
-           <StyledLink  to='/register/'>Join us! or Sign in!</StyledLink>
-          </CardContent>
-        </Card>
-
-        <Card>
-          <CardHeader>
-            <CardIcon>
-              <MdAccountCircle />
-            </CardIcon>
-            <CardTitle>{t("Account")}</CardTitle>
-          </CardHeader>
-          <CardContent>
-          <StyledLink  to='/account/'> {t("Catch me if you can")} </StyledLink>
-          </CardContent>
-        </Card>
-
+        {!isLogIn ? (
+          <Card>
+            <CardHeader>
+              <CardIcon>
+                <MdAccountCircle />
+              </CardIcon>
+              <CardTitle>{t("Sign up or Sign in")}</CardTitle>
+            </CardHeader>
+            <CardContent>
+              <StyledLink to="/register/">Join us! or Sign in!</StyledLink>
+            </CardContent>
+          </Card>
+        ) : (
+          <Card>
+            <CardHeader>
+              <CardIcon>
+                <MdAccountCircle />
+              </CardIcon>
+              <CardTitle>{t("Account")}</CardTitle>
+            </CardHeader>
+            <CardContent>
+              <StyledLink to="/account/">
+                {" "}
+                {t("Catch me if you can")}{" "}
+              </StyledLink>
+            </CardContent>
+          </Card>
+        )}
         <Card>
           <CardHeader>
             <CardIcon>

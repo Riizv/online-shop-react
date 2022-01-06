@@ -1,11 +1,21 @@
 <?php
 mysqli_report(MYSQLI_REPORT_ERROR | MYSQLI_REPORT_STRICT);
 
-header("Access-Control-Allow-Origin: *");
-header("Access-Control-Allow-Headers: *");
-header("Content-Type: application/json; charset=UTF-8");
+if (isset(apache_request_headers()['Authorization'])) {
+    try {
+        session_id(apache_request_headers()['Authorization']);
+
+    } catch (Exception $e) {
+    }
+}
 
 session_start();
+
+// headers for CORS
+header("Access-Control-Allow-Origin: *");
+header("Content-Type: application/json; charset=UTF-8");
+header("Access-Control-Allow-Headers: Content-Type, Authorization");
+header("Access-Control-Allow-Methods: *");
 
 class Database
 {

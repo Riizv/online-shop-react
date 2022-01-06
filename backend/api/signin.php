@@ -8,5 +8,5 @@ $email = $_POST['signin_email'];
 $password = $_POST['signin_password'];
 
 
-echo json_encode($data->sign_in($email, $password));
+echo json_encode(["token"=>$data->sign_in($email, $password)]); 
 

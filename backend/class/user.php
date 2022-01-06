@@ -14,6 +14,6 @@ class User{
 
         $result = $this->db->getConnection()->query($query);
 
-        return !!$result;  
+        return $result;  
     }
 }

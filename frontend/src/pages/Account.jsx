@@ -1,9 +1,9 @@
-import React, { useRef, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import { useTranslation } from "react-i18next";
 // import { useSelector, useDispatch } from 'react-redux';
 import { Helmet } from "react-helmet";
 import styled from "styled-components";
-import { useNavigate, Link } from "react-router-dom";
+import { useNavigate, Link, Navigate } from "react-router-dom";
 
 import {
   Img,
@@ -14,19 +14,19 @@ import {
   CardIcon,
   CardContent,
   CardTitle,
+  Button,
 } from "../components";
 import {
-    MdUpdate,
-    MdBrightnessMedium,
-    MdTranslate,
-    MdAccountCircle,
-    MdMail,
-  } from "react-icons/md";
+  MdUpdate,
+  MdBrightnessMedium,
+  MdTranslate,
+  MdAccountCircle,
+  MdMail,
+  MdLogout,
+} from "react-icons/md";
 import account_banner from "../assets/undraw_time_management_re_tk5w.svg";
 import { Grid } from "../containers";
 import { GiArchiveRegister } from "react-icons/gi";
-
-
 
 const StyledLink = styled(Link)`
   display: block;
@@ -50,35 +50,28 @@ const StyledLink = styled(Link)`
     background: ${({ theme }) => theme.card.backgroundColor};
     color: ${({ theme }) => theme.card.fontColor};
   }
-`
-
+`;
 
 const Account = () => {
   const { t } = useTranslation();
-//   const formRef = useRef();
-//   const formRef2 = useRef();
+  const [data, setData] = useState([]);
+  const [value, setValue] = useState("");
+  const logout = ()=>{localStorage.removeItem("token"); setRedirect(true)}
 
-//   const register = (e) => {
-//     e.preventDefault();
-//     const formData = new FormData(formRef.current);
-//     fetch("http://localhost/online-shop-react/backend/api/register.php", {
-//       method: "POST",
-//       body: formData,
-//     })
-//       .then((r) => r.text())
-//       .then((r) => console.log(r));
-//   };
+  const [redirect, setRedirect] = useState(false)
 
-//   const sigin = (e) => {
-//     e.preventDefault();
-//     const formData = new FormData(formRef2.current);
-//     fetch("http://localhost/online-shop-react/backend/api/signin.php", {
-//       method: "POST",
-//       body: formData,
-//     })
-//       .then((r) => r.text())
-//       .then((r) => console.log(r));
-//   };
+  useEffect(() => {
+    fetch("http://localhost/online-shop-react/backend/api/get_user.php", {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+        "Authorization": `${localStorage.getItem("token")}`,
+      },
+    })
+      .then((r) => r.json())
+      .then((r) => setData(r));
+    console.log(data);
+  }, [value]);
 
   return (
     <div>
@@ -91,67 +84,58 @@ const Account = () => {
         <Card>
           <CardHeader>
             <CardIcon>
-             <MdAccountCircle />
+              <MdAccountCircle />
             </CardIcon>
-            <CardTitle>
-           {t("Account Information")}
-            </CardTitle>
+            <CardTitle>{t("Account Information")}</CardTitle>
           </CardHeader>
           <CardContent>
-           <p>
-             {t("Name: ")}
-           </p>
-           <p>
-             {t("Last name: ")} 
-           </p>
-           <p>
-             {t("Join date: ")}
-           </p>
+            <p>
+              {t("Name: ")} {data?.user_name}
+            </p>
+            <p>{t("Join date: ")} {data?.user_create_date}</p>
           </CardContent>
         </Card>
 
         <Card>
           <CardHeader>
             <CardIcon>
-             <MdMail />
+              <MdMail />
             </CardIcon>
-            <CardTitle>
-           {t("Contact Information")}
-            </CardTitle>
+            <CardTitle>{t("Contact Information")}</CardTitle>
           </CardHeader>
           <CardContent>
-           <p>
-             {t("Town: ")}
-           </p>
-           <p>
-             {t("Street: ")}
-           </p>
-           <p>
-             {t("Post code: ")} 
-           </p>
-           <p>
-             {t("Phone number: ")}
-           </p>
-           <p>
-             {t("E-mail: ")}
-           </p>
+            <p>{t("Town: ")} {data?.user_town}</p>
+            <p>{t("Street: ")} {data?.user_street}</p>
+            <p>{t("Post code: ")} {data?.user_post_code}</p>
+            <p>{t("Phone number: ")} {data?.user_phone_number}</p>
+            <p>{t("E-mail: ")} {data?.user_email}</p>
           </CardContent>
         </Card>
+
+        {/* <Card>
+          <CardHeader>
+            <CardIcon>
+              <MdMail />
+            </CardIcon>
+            <CardTitle>{t("Account management")}</CardTitle>
+          </CardHeader>
+          <CardContent>
+            <StyledLink to="/account_managment/">Manage account!</StyledLink>
+          </CardContent>
+        </Card> */}
 
         <Card>
           <CardHeader>
             <CardIcon>
-             <MdMail />
+              <MdLogout />
             </CardIcon>
-            <CardTitle>
-           {t("Account management")}
-            </CardTitle>
+            <CardTitle>{t("Log out!")}</CardTitle>
           </CardHeader>
           <CardContent>
-          <StyledLink  to='/account_managment/'>Manage account!</StyledLink>
+            <Button onClick={logout}>{t("Log out!")}</Button>
+            {redirect && <Navigate to={'/'}/>}
           </CardContent>
         </Card>
-       
       </Grid>
     </div>
   );

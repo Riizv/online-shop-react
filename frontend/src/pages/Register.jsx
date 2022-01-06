@@ -1,8 +1,9 @@
-import React, { useRef, useEffect } from "react";
+import React, { useRef, useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
 // import { useSelector, useDispatch } from 'react-redux';
 import { Helmet } from "react-helmet";
 import styled from "styled-components";
+import { useNavigate, Link, Navigate } from "react-router-dom";
 
 import {
   Img,
@@ -33,6 +34,10 @@ const Register = () => {
   const { t } = useTranslation();
   const formRef = useRef();
   const formRef2 = useRef();
+  const login = ()=>{setRedirect(true)}
+
+  const [redirect, setRedirect] = useState(false)
+
 
   const register = (e) => {
     e.preventDefault();
@@ -52,8 +57,10 @@ const Register = () => {
       method: "POST",
       body: formData,
     })
-      .then((r) => r.text())
-      .then((r) => console.log(r));
+      .then((r) => r.json())
+      .then(r => {
+        localStorage.setItem('token', r.token)
+      })
   };
 
   return (
@@ -130,16 +137,16 @@ const Register = () => {
                 <Input type="email" name="signin_email" />
               </div>
               <div>
-                <label htmlFor="signin_password">password:</label>
+                <label htmlFor="signin_password">Password:</label>
                 <Input type="password" name="signin_password" minLength="8" />
               </div>
               <div>
                 <label htmlFor="submit">Sign in!</label>
-                <Input type="submit" name="submit" value="Sign in!" />
+                <Input type="submit" name="submit" value="Sign in!"  />
               </div>
             </Form>
+            {redirect && <Navigate to={'/'}/>}
             <p></p>
-            <a href="https://kcpru.com">Idż do kacpra</a>
           </CardContent>
         </Card>
       </Grid>
