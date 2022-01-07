@@ -5,7 +5,6 @@ import { AiOutlineLoading3Quarters, AiFillFire } from "react-icons/ai";
 import styled, { keyframes } from "styled-components";
 import { useNavigate, useParams } from "react-router-dom";
 
-
 import { IoMdArrowBack } from "react-icons/io";
 import { RiTempColdLine } from "react-icons/ri";
 import { Helmet } from "react-helmet";
@@ -48,11 +47,22 @@ const Product = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
-    fetch(`http://localhost/online-shop-react/backend/api/get_product.php?id=${id}`)
+    fetch(
+      `http://localhost/online-shop-react/backend/api/get_product.php?id=${id}`
+    )
       .then((r) => r.json())
       .then((r) => setData(r));
     console.log(data);
-  },[value]);
+  }, [value]);
+
+  // const addToCart = useEffect(() => {
+  //   fetch(
+  //     `http://localhost/online-shop-react/backend/api/add_to_cart.php?id=${id}`
+  //   )
+  //     .then((r) => r.json())
+  //     .then((r) => setData(r));
+  //   console.log(data);
+  // }, [value]);
 
   return (
     <div>
@@ -72,9 +82,49 @@ const Product = () => {
           </CardHeader>
           <CardContent>
             {data?.description}
-            {/* <Progress value={99999} /> */}
           </CardContent>
         </Card>
+
+        <Card>
+          <CardHeader>
+            <CardIcon>
+              <AiFillFire />
+            </CardIcon>
+            <CardTitle>{t("More Information")}</CardTitle>
+          </CardHeader>
+          <CardContent>
+            <p>
+              Price: {data?.price}zł Quantity: {data?.quantity} Discount: {data?.discount}
+            </p>
+          </CardContent>
+          </Card>
+
+        {data?.name &&
+          <Card>
+          <CardHeader>
+            <CardIcon>
+              <AiFillFire />
+            </CardIcon>
+            <CardTitle>{t("Image")}</CardTitle>
+          </CardHeader>
+          <CardContent>
+            <Img src={`http://localhost/online-shop-react/backend/api/uploads/${data?.name}`} alt="Product image missing" />
+          </CardContent>
+        </Card> 
+        }
+
+          <Card>
+          <CardHeader>
+            <CardIcon>
+              <AiFillFire />
+            </CardIcon>
+            <CardTitle>{t("Actions")}</CardTitle>
+          </CardHeader>
+          <CardContent>
+            {/* <Button onClick={addToCart}>{t("Add to Cart!")}</Button> */}
+          </CardContent>
+          </Card>
+
       </Grid>
     </div>
   );

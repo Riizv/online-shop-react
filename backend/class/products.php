@@ -23,12 +23,12 @@ class Product
     }
     public function get_product($id)
     {
-        $query = "SELECT * FROM products WHERE product_id=$id";
-
+        $query = "SELECT * FROM products INNER JOIN product_images USING(product_id) INNER JOIN images USING(img_id) WHERE product_id=$id";
+        
         $result = $this->db->getConnection()->query($query);
 
         $product = $result->fetch_assoc();
-
+    
         return $product;
     }
     public function get_categories()
@@ -81,8 +81,7 @@ class Product
         }
 
         //tworzenie katalogu z aktualną datą
-        $dir = date("Y-m-d");
-        $dir_location = $target_dir . $dir;
+        $dir_location = $target_dir ;
         echo $dir_location;
         if (!file_exists($dir_location)) {
             mkdir($dir_location, 0777);
