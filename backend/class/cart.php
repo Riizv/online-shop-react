@@ -10,7 +10,7 @@ class Cart{
     }
     public function add_to_cart($user_id){
 
-        $_SESSION[`cart_$user_id`];
+        $_SESSION[`cart`];
 
 
         $query = "";

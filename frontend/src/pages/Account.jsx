@@ -24,6 +24,7 @@ import {
   MdMail,
   MdLogout,
 } from "react-icons/md";
+import { IoMdAddCircle } from "react-icons/io";
 import account_banner from "../assets/undraw_time_management_re_tk5w.svg";
 import { Grid } from "../containers";
 import { GiArchiveRegister } from "react-icons/gi";
@@ -56,22 +57,27 @@ const Account = () => {
   const { t } = useTranslation();
   const [data, setData] = useState([]);
   const [value, setValue] = useState("");
-  const logout = ()=>{localStorage.removeItem("token"); setRedirect(true)}
+  const logout = () => {
+    localStorage.removeItem("token");
+    setRedirect(true);
+  };
 
-  const [redirect, setRedirect] = useState(false)
+  const [redirect, setRedirect] = useState(false);
 
   useEffect(() => {
     fetch("http://localhost/online-shop-react/backend/api/get_user.php", {
       method: "GET",
       headers: {
         "Content-Type": "application/json",
-        "Authorization": `${localStorage.getItem("token")}`,
+        Authorization: `${localStorage.getItem("token")}`,
       },
     })
       .then((r) => r.json())
       .then((r) => setData(r));
     console.log(data);
   }, [value]);
+
+  const isAdmin = data?.user_type == 2;
 
   return (
     <div>
@@ -92,7 +98,9 @@ const Account = () => {
             <p>
               {t("Name: ")} {data?.user_name}
             </p>
-            <p>{t("Join date: ")} {data?.user_create_date}</p>
+            <p>
+              {t("Join date: ")} {data?.user_create_date}
+            </p>
           </CardContent>
         </Card>
 
@@ -104,11 +112,21 @@ const Account = () => {
             <CardTitle>{t("Contact Information")}</CardTitle>
           </CardHeader>
           <CardContent>
-            <p>{t("Town: ")} {data?.user_town}</p>
-            <p>{t("Street: ")} {data?.user_street}</p>
-            <p>{t("Post code: ")} {data?.user_post_code}</p>
-            <p>{t("Phone number: ")} {data?.user_phone_number}</p>
-            <p>{t("E-mail: ")} {data?.user_email}</p>
+            <p>
+              {t("Town: ")} {data?.user_town}
+            </p>
+            <p>
+              {t("Street: ")} {data?.user_street}
+            </p>
+            <p>
+              {t("Post code: ")} {data?.user_post_code}
+            </p>
+            <p>
+              {t("Phone number: ")} {data?.user_phone_number}
+            </p>
+            <p>
+              {t("E-mail: ")} {data?.user_email}
+            </p>
           </CardContent>
         </Card>
 
@@ -123,7 +141,19 @@ const Account = () => {
             <StyledLink to="/account_managment/">Manage account!</StyledLink>
           </CardContent>
         </Card> */}
-
+        {isAdmin &&(
+          <Card>
+            <CardHeader>
+              <CardIcon>
+                <IoMdAddCircle />
+              </CardIcon>
+              <CardTitle>{t("Product Add")}</CardTitle>
+            </CardHeader>
+            <CardContent>
+              <StyledLink to="/product_add/">Add product!</StyledLink>
+            </CardContent>
+          </Card>
+        )}
         <Card>
           <CardHeader>
             <CardIcon>
@@ -133,7 +163,7 @@ const Account = () => {
           </CardHeader>
           <CardContent>
             <Button onClick={logout}>{t("Log out!")}</Button>
-            {redirect && <Navigate to={'/'}/>}
+            {redirect && <Navigate to={"/"} />}
           </CardContent>
         </Card>
       </Grid>

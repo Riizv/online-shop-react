@@ -65,7 +65,7 @@ const Form = styled.form`
 `;
 
 
-const Account_managment = () => {
+const AccountManagment = () => {
   const { t } = useTranslation();
   const [data, setData] = useState([]);
   const [value, setValue] = useState("");
@@ -166,4 +166,4 @@ const Account_managment = () => {
   );
 };
 
-export default Account_managment;
+export default AccountManagment;

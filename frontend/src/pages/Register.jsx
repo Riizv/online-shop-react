@@ -34,7 +34,6 @@ const Register = () => {
   const { t } = useTranslation();
   const formRef = useRef();
   const formRef2 = useRef();
-  const login = ()=>{setRedirect(true)}
 
   const [redirect, setRedirect] = useState(false)
 
@@ -48,6 +47,7 @@ const Register = () => {
     })
       .then((r) => r.text())
       .then((r) => console.log(r));
+      setRedirect('/register/')
   };
 
   const sigin = (e) => {
@@ -61,10 +61,12 @@ const Register = () => {
       .then(r => {
         localStorage.setItem('token', r.token)
       })
+      setRedirect('/')
   };
 
   return (
     <div>
+      {redirect && <Navigate to={redirect}/>}
       <Helmet>
         <title>Register</title>
       </Helmet>
@@ -142,10 +144,9 @@ const Register = () => {
               </div>
               <div>
                 <label htmlFor="submit">Sign in!</label>
-                <Input type="submit" name="submit" value="Sign in!"  />
+                <Input  type="submit" name="submit" value="Sign in!"  />
               </div>
             </Form>
-            {redirect && <Navigate to={'/'}/>}
             <p></p>
           </CardContent>
         </Card>

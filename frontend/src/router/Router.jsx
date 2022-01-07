@@ -1,6 +1,6 @@
 import React from "react";
 import { Routes, Route } from "react-router-dom";
-import { Home, Products, Product, Cart, Settings, Register, Account,  Account_managment, PageNotFound } from "../pages";
+import { Home, Products, Product, ProductAdd, Cart, Settings, Register, Account,  AccountManagment, PageNotFound } from "../pages";
 
 const Router = () => {
   return (
@@ -10,6 +10,8 @@ const Router = () => {
         <Route path="/products" element={<Products />} />
 
         <Route path="/product/:id" element={<Product />} />
+        
+        <Route path="/product_add" element={<ProductAdd />} />
 
         <Route path="/cart" element={<Cart />} />
 
@@ -19,7 +21,7 @@ const Router = () => {
 
         <Route path="/account" element={<Account />} />
 
-        <Route path="/account_managment" element={<Account_managment />} />
+        <Route path="/account_managment" element={<AccountManagment />} />
 
       <Route path="*" element={<PageNotFound />} />
       </Routes>
