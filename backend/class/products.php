@@ -12,14 +12,21 @@ class Product
     public function get_products()
     {
         $query = "SELECT * FROM products";
+        $query2 = "SELECT * FROM categories";
 
         $result = $this->db->getConnection()->query($query);
+        $result2 = $this->db->getConnection()->query($query2);
 
         $products = [];
         while ($product = $result->fetch_assoc()) {
             $products[] = $product;
         }
         return $products;
+        $categories = [];
+        while ($category = $result2->fetch_assoc()) {
+            $categories[] = $category;
+        }
+        return $categories;
     }
     public function get_product($id)
     {
@@ -43,7 +50,6 @@ class Product
         }
         return $categories;
     }
-
     public function add_product($name, $category, $description, $price, $quantity, $discount, $file_name, $file_type, $file_tmp_name, $file_error, $file_size)
     {
 
@@ -112,5 +118,9 @@ class Product
 
         return true;
        
+    }
+    public function filtr_product($category){
+        $query = "SELECT * FROM categories WHERE category_id = $category";
+        $result = $this->db->getConnection()->query($query);
     }
 }

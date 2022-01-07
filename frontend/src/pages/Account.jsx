@@ -141,6 +141,7 @@ const Account = () => {
             <StyledLink to="/account_managment/">Manage account!</StyledLink>
           </CardContent>
         </Card> */}
+        
         {isAdmin &&(
           <Card>
             <CardHeader>
