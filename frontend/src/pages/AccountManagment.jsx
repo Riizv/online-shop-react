@@ -72,6 +72,9 @@ const AccountManagment = () => {
   const formMng = useRef();
 
 
+
+
+   //TODO: manage jest jako onSubmit i tworzy użytkownika bo to get user a nie manage account naprawa to na odwrót jest
   useEffect(() => {
     fetch("http://localhost/online-shop-react/backend/api/manage_account.php", {
       method: "GET",
